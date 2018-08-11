@@ -1,0 +1,230 @@
+<template>
+  <div id="app">
+
+    <div
+      id="devtools"
+      :class="{'is-collapsed' : collapsed }"
+    >
+      <h2>Developer Tools</h2>
+      <ul>
+        <li>
+          <router-link to="/game">Game</router-link>
+        </li>
+        <li>
+          <router-link to="/">Home</router-link>
+        </li>
+        <aplayer autoplay
+          :music="music"
+          :list="musicList"
+          :mini=false
+        />
+        <button id="devtoolsbtn" v-on:click=" collapsed = !collapsed">🖥 Developer Tools️</button>
+
+      </ul>
+    </div>
+
+    <div class="wrapper">
+      <header class="header">{{ title }}</header>
+      <div class="main">
+        <transition class="child-view" name="fade" mode="out-in">
+          <router-view name="content"></router-view>
+        </transition>
+      </div>
+      <aside class="aside aside-1">Inventory</aside>
+      <aside class="aside aside-2">Stats</aside>
+      <footer class="footer">
+        Footer
+
+        <button id="devtoolsbtn" v-on:click=" collapsed = !collapsed">🖥 Developer Tools️</button>
+
+      </footer>
+    </div>
+
+
+  </div>
+</template>
+
+
+
+<script>
+  import Aplayer from 'vue-aplayer'
+  import stones from '@/assets/Stepping Stones.mp3'
+  import feet from '@/assets/feet.png'
+  import chrisPic from '@/assets/grimtech.jpeg'
+
+  import mancyPic from '@/assets/mancy.jpg'
+  import mancyMp3 from '@/assets/mancy.mp3'
+
+  import niceMp3 from '@/assets/nice.mp3'
+
+  import lazerMp3 from '@/assets/lazer2.mp3'
+  import lazerPic from '@/assets/lazer.jpg'
+
+  import eyeMp3 from '@/assets/eye.mp3'
+  import medamaMp3 from '@/assets/目玉（ｍｅｄａｍａ)  「EYEBALL」.mp3'
+  import eyePic from '@/assets/Eye_iris.jpg'
+
+  import hardMp3 from '@/assets/hard.mp3'
+  import hardPic from '@/assets/hard.jpg'
+
+  export default {
+    name: 'App',
+    components: {
+      Aplayer
+    },
+    data () {
+      return {
+        music: {
+          title: 'Stepping Stones',
+          artist: 'Matthew Pablo',
+          src: stones,
+          pic: feet
+        },
+        musicList: [
+          {
+            title: 'MANCY',
+            artist: 'Chris Grimmett',
+            src: mancyMp3,
+            pic: mancyPic
+          },
+          {
+            title: 'nice',
+            artist: 'Chris Grimmett',
+            src: niceMp3,
+            pic: chrisPic
+          },
+          {
+            title: 'EYE',
+            artist: 'Chris Grimmett',
+            src: eyeMp3,
+            pic: eyePic
+          },
+          {
+            title: 'HARD',
+            artist: 'Chris Grimmett',
+            src: hardMp3,
+            pic: hardPic
+          },
+          {
+            title: '目玉（ｍｅｄａｍａ)  「EYEBALL」',
+            artist: 'Chris Grimmett',
+            src: medamaMp3,
+            pic: eyePic
+          },
+          {
+            title: 'lazer2',
+            artist: 'Chris Grimmett',
+            src: lazerMp3,
+            pic: lazerPic
+          }
+        ],
+        title: "WE RUNNIN' OUTTA SPACE!",
+        collapsed: false
+      }
+    }
+  }
+</script>
+
+
+
+
+<style>
+
+
+.is-collapsed {
+	display: none;
+}
+
+#devtools {
+  position: absolute;
+  z-index: 50;
+  background-color: white;
+  border: 1px solid black;
+  width: 15%;
+  filter: drop-shadow(16px 16px 20px black);
+}
+
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s ease;
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
+.child-view {
+  position: absolute;
+  transition: all .5s cubic-bezier(.55,0,.1,1);
+}
+.slide-left-enter, .slide-right-leave-active {
+  opacity: 0;
+  -webkit-transform: translate(30px, 0);
+  transform: translate(30px, 0);
+}
+.slide-left-leave-active, .slide-right-enter {
+  opacity: 0;
+  -webkit-transform: translate(-30px, 0);
+  transform: translate(-30px, 0);
+}
+
+#devtoolsbtn {
+  display: inherit;
+}
+
+
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center;
+}
+
+.wrapper > * {
+  padding: 10px;
+  flex: 1 1 100%;
+}
+
+.header {
+  background: tomato;
+}
+
+.main {
+  text-align: left;
+  background: deepskyblue;
+  flex: 1 0 auto;
+}
+
+.footer {
+  background: lightgreen;
+  margin-top: auto;
+}
+
+.aside-1 {
+  background: gold;
+}
+
+.aside-2 {
+  background: hotpink;
+}
+
+@media all and (min-width: 600px) {
+  .aside { flex: 1 auto; }
+}
+
+@media all and (min-width: 800px) {
+  .main    { flex: 3 0px; }
+  .aside-1 { order: 1; }
+  .main    { order: 2; }
+  .aside-2 { order: 3; }
+  .footer  { order: 4; }
+}
+
+body {
+  padding: 2em;
+}
+</style>
