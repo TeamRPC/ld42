@@ -35,14 +35,21 @@ npm run build --report
   * praise
 
 
+### Graphic design
+
+[Color Palette](http://paletton.com/#uid=7030u0koVuCfdHJkrz6tQr5vtle)
+
 ## TODO
 
   * [ ] Make game
     * [x] Story concept
     * [x] Game engine
+  * [ ] Search for @TODO tags and replace with real content
 
 
 ## Attribution
 
 https://opengameart.org/content/stepping-stones CC-BY 3.0
 https://opengameart.org/content/faction4-spacestation CC-BY 3.0
+https://opengameart.org/content/assassin-bot CC-BY 3.0
+https://opengameart.org/content/sound-effects-sfx005 CC-BY 3.0

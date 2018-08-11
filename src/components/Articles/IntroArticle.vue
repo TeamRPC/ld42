@@ -3,8 +3,13 @@
 
 <template>
   <article class="main">
-    <p>The epic quest to make more space! Welcome to our gaem.</p>
-    <router-link to="/game">Enter the realm</router-link>
+    <p>@TODO LOREM IPSUM</p>
+    <router-link
+      to="/game"
+      class="button button-green"
+    >
+      Enter the realm
+    </router-link>
   </article>
 </template>
 

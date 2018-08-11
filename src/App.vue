@@ -13,12 +13,14 @@
         <li>
           <router-link to="/">Home</router-link>
         </li>
-        <aplayer autoplay
+        <aplayer
           :music="music"
           :list="musicList"
           :mini=false
         />
-        <button id="devtoolsbtn" v-on:click=" collapsed = !collapsed">🖥 Developer Tools️</button>
+        <vue-audio file=warp></vue-audio>
+
+        <button class="button button-blue" id="devtoolsbtn" v-on:click=" collapsed = !collapsed">🖥 Developer Tools️</button>
 
       </ul>
     </div>
@@ -31,7 +33,14 @@
         </transition>
       </div>
       <aside class="aside aside-1">Inventory</aside>
-      <aside class="aside aside-2">Stats</aside>
+      <aside class="aside aside-2">
+        <stats
+          :people="stats.people"
+          :debris="stats.debris"
+          :fear="stats.fear"
+          :praise="stats.praise"
+        ></stats>
+      </aside>
       <footer class="footer">
         Footer
 
@@ -48,6 +57,11 @@
 
 <script>
   import Aplayer from 'vue-aplayer'
+  import warp from '@/assets/FX043.mp3'
+  import VueAudio from 'vue-audio';
+
+  import Stats from '@/components/GUI/Stats'
+
   import stones from '@/assets/Stepping Stones.mp3'
   import feet from '@/assets/feet.png'
   import chrisPic from '@/assets/grimtech.jpeg'
@@ -70,10 +84,39 @@
   export default {
     name: 'App',
     components: {
-      Aplayer
+      Aplayer,
+      Stats,
+      VueAudio
+    },
+    methods: {
+      playSound (sound) {
+        if (sound) {
+          var audio = new Audio(sound)
+          audio.play()
+        }
+      }
     },
     data () {
       return {
+        stats: {
+          people: 50,
+          peopleMax: 10000,
+          debris: 300,
+          debrisMax: 600,
+          praise: 10,
+          praiseMax: 100,
+          fear: 15,
+          fearMax: 100
+        },
+        computed: {
+          people: function () {
+            // `this` points to the vm instance
+            return this.people / this.peopleMax
+          },
+          debris: function () {
+            return this.debris / this.debrisMax
+          }
+        },
         music: {
           title: 'Stepping Stones',
           artist: 'Matthew Pablo',
@@ -140,7 +183,7 @@
   z-index: 50;
   background-color: white;
   border: 1px solid black;
-  width: 15%;
+  width: 35%;
   filter: drop-shadow(16px 16px 20px black);
 }
 
@@ -190,26 +233,28 @@
 }
 
 .header {
-  background: tomato;
+  background: #FFAA5C;
 }
 
 .main {
   text-align: left;
-  background: deepskyblue;
+  background: #3E99A6;
   flex: 1 0 auto;
+  height: 75vh;
+  overflow-y: scroll;
 }
 
 .footer {
-  background: lightgreen;
+  background: #73DB85;
   margin-top: auto;
 }
 
 .aside-1 {
-  background: gold;
+  background: #FFAA5C;
 }
 
 .aside-2 {
-  background: hotpink;
+  background: #FFAA5C;
 }
 
 @media all and (min-width: 600px) {
@@ -226,5 +271,24 @@
 
 body {
   padding: 2em;
+  background-image: url('assets/metal.png');
+  background-repeat: repeat;
 }
+
+.button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.button-green {background-color: #4CAF50;} /* Green */
+.button-blue {background-color: #008CBA;} /* Blue */
+.button-red {background-color: #f44336;} /* Red */
+.button-gray {background-color: #e7e7e7; color: black;} /* Gray */
+.button-black {background-color: #555555;} /* Black */
+
 </style>
