@@ -4,7 +4,7 @@ Our Entry for Ludum Dare 42
 ## Team check-in
 
   * [x] Chris
-  * [ ] David
+  * [x] David
   * [ ] Michael
 
 
