@@ -16,9 +16,10 @@
         <aplayer
           :music="music"
           :list="musicList"
-          :mini=false
+          :mini="false"
+          :controls="true"
         />
-        <vue-audio file=warp></vue-audio>
+
 
         <button class="button button-blue" id="devtoolsbtn" v-on:click=" collapsed = !collapsed">🖥 Developer Tools️</button>
 
@@ -57,8 +58,8 @@
 
 <script>
   import Aplayer from 'vue-aplayer'
-  import warp from '@/assets/FX043.mp3'
-  import VueAudio from 'vue-audio';
+  // import warp from '@/assets/FX043.mp3'
+  // import VueAudio from 'vue-audio';
 
   import Stats from '@/components/GUI/Stats'
 
@@ -85,16 +86,7 @@
     name: 'App',
     components: {
       Aplayer,
-      Stats,
-      VueAudio
-    },
-    methods: {
-      playSound (sound) {
-        if (sound) {
-          var audio = new Audio(sound)
-          audio.play()
-        }
-      }
+      Stats
     },
     data () {
       return {

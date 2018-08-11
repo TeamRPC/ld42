@@ -3,7 +3,7 @@
 
 <template>
   <div class="stats">
-    <h3>Stats</h3>
+    <h3>Station 7 Stats</h3>
 
     <div class="barsWrapper">
       <div class="bar1">
@@ -22,24 +22,14 @@
           scale="Y"
           origin="bottom"
           :beneficial="false"
-          label="debris"
+          label="danger"
         />
       </div>
       <div class="bar3">
         <progress-bar
           :value="fear"
           :beneficial="false"
-          label="fear"
-        />
-      </div>
-      <div class="bar4">
-        <progress-bar
-          :value="praise"
-          scale="Y"
-          origin="bottom"
-          bar-class="bg-info"
-          :beneficial="true"
-          label="praise"
+          label="unrest"
         />
       </div>
     </div>
