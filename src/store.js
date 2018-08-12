@@ -127,7 +127,7 @@ const actions = {
   addDamage (state, amt) {
     var dmg = state.state.damage
     if (dmg + amt > 99) {
-      state.commit('lostGame')
+      state.commit('loseGame')
     } else {
       state.commit('addDamage', amt)
     }
