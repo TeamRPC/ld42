@@ -6,6 +6,8 @@
     <h2>Population Limit</h2>
     <img
       :src="feet"
+      width="200px"
+      height="200px"
     ></img>
     <p>Space Station 7 is full!</p>
     <router-link

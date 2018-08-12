@@ -11,7 +11,6 @@ import PrivateResultLeave from '@/components/Articles/PrivateRocket/PrivateResul
 import PrivateResultAllow from '@/components/Articles/PrivateRocket/PrivateResultAllow'
 
 import PopIntro from '@/components/Articles/PopulationLimit/PopIntro'
-import PopShoot from '@/components/Articles/PopulationLimit/PopShoot'
 import PopDecisionOne from '@/components/Articles/PopulationLimit/PopDecisionOne'
 import PopDecisionTwo from '@/components/Articles/PopulationLimit/PopDecisionTwo'
 import PopResultExile from '@/components/Articles/PopulationLimit/PopResultExile'
@@ -19,6 +18,8 @@ import PopResultIgnore from '@/components/Articles/PopulationLimit/PopResultIgno
 import PopResultElderly from '@/components/Articles/PopulationLimit/PopResultElderly'
 import PopResultAdults from '@/components/Articles/PopulationLimit/PopResultAdults'
 import PopResultYouth from '@/components/Articles/PopulationLimit/PopResultYouth'
+
+import GameOver from '@/components/Articles/GameOver'
 
 Vue.use(Router)
 
@@ -94,13 +95,6 @@ export default new Router({
         content: PopIntro
       }
     },
-    {
-      path: '/pop-shoot',
-      components: {
-        default: PopShoot,
-        content: PopShoot
-      }
-    },
     { path: '/pop-decision-1',
       components: {
         default: PopDecisionOne,
@@ -147,6 +141,13 @@ export default new Router({
       components: {
         default: PopResultYouth,
         content: PopResultYouth
+      }
+    },
+    {
+      path: '/game-over',
+      components: {
+        default: GameOver,
+        content: GameOver
       }
     }
   ]

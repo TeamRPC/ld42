@@ -4,7 +4,10 @@
 <template>
   <div class="pop">
     <h2>Population Limit</h2>
-    <img :src="station"></img>
+    <img
+      :src="station"
+      width="200px"
+      height="200px"></img>
     <p>Space Station 7 cannot support this population. What will you do?</p>
     <a
       class="button button-red"

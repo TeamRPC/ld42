@@ -43,10 +43,25 @@
 
   export default {
     name: 'IntroArticle',
+    mounted: function () {
+      if (this.people < 1) {
+        console.log('population too low')
+        this.$router.push({
+          path: '/game-over'
+        })
+      } else if (this.damage > 99) {
+        console.log('station destroyed')
+        this.$router.push({
+          path: '/game-over'
+        })
+      }
+    },
     computed: {
       ...mapGetters([
         'inventory',
-        'people'
+        'people',
+        'damage',
+        'unrest'
       ]),
       isScenarioCompleted: function () {
         return {

@@ -73,7 +73,7 @@
       </aside>
       <footer class="footer">
         <h4>Music</h4>
-        <aplayer
+        <aplayer autoplay
           :music="music"
           :list="musicList"
           :mini="false"
