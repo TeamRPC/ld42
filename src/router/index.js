@@ -14,6 +14,18 @@ import PrivateResultAttack from '@/components/Articles/PrivateRocket/PrivateResu
 import PrivateResultLeave from '@/components/Articles/PrivateRocket/PrivateResultLeave'
 import PrivateResultAllow from '@/components/Articles/PrivateRocket/PrivateResultAllow'
 
+import PopIntro from '@/components/Articles/PopulationLimit/PopIntro'
+import PopShoot from '@/components/Articles/PopulationLimit/PopShoot'
+import PopDecisionOne from '@/components/Articles/PopulationLimit/PopDecisionOne'
+import PopDecisionTwo from '@/components/Articles/PopulationLimit/PopDecisionTwo'
+import PopResultShoot from '@/components/Articles/PopulationLimit/PopResultShoot'
+import PopResultIgnore from '@/components/Articles/PopulationLimit/PopResultIgnore'
+import PopResultHail from '@/components/Articles/PopulationLimit/PopResultHail'
+import PopResultAttack from '@/components/Articles/PopulationLimit/PopResultAttack'
+import PopResultLeave from '@/components/Articles/PopulationLimit/PopResultLeave'
+import PopResultAllow from '@/components/Articles/PopulationLimit/PopResultAllow'
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -107,6 +119,75 @@ export default new Router({
       components: {
         default: PrivateResultAllow,
         content: PrivateResultAllow
+      }
+    },
+    {
+      path: '/pop',
+      components: {
+        default: PopIntro,
+        content: PopIntro
+      }
+    },
+    {
+      path: '/pop-shoot',
+      components: {
+        default: PopShoot,
+        content: PopShoot
+      }
+    },
+    { path: '/pop-decision-1',
+      components: {
+        default: PopDecisionOne,
+        content: PopDecisionOne
+      }
+    },
+    {
+      path: '/pop-decision-2',
+      components: {
+        default: PopDecisionTwo,
+        content: PopDecisionTwo
+      }
+    },
+    {
+      path: '/pop-result-shoot',
+      components: {
+        default: PopResultShoot,
+        content: PopResultShoot
+      }
+    },
+    {
+      path: '/pop-result-ignore',
+      components: {
+        default: PopResultIgnore,
+        content: PopResultIgnore
+      }
+    },
+    {
+      path: '/pop-result-hail',
+      components: {
+        default: PopResultHail,
+        content: PopResultHail
+      }
+    },
+    {
+      path: '/pop-result-attack',
+      components: {
+        default: PopResultAttack,
+        content: PopResultAttack
+      }
+    },
+    {
+      path: '/pop-result-leave',
+      components: {
+        default: PopResultLeave,
+        content: PopResultLeave
+      }
+    },
+    {
+      path: '/pop-result-allow',
+      components: {
+        default: PopResultAllow,
+        content: PopResultAllow
       }
     }
   ]

@@ -19,10 +19,11 @@
     </router-link>
 
     <router-link
-      to="/null"
+      to="/pop"
       class="button button-gray"
+      :class="isPopulationMaxed"
     >
-      TBD
+      Population Limit
     </router-link>
 
     <router-link
@@ -44,11 +45,18 @@
     name: 'IntroArticle',
     computed: {
       ...mapGetters([
-        'inventory'
+        'inventory',
+        'people'
       ]),
       isScenarioCompleted: function () {
         return {
           'button-disabled': this.inventory.filter(item => item.name === 'vessel').length
+        }
+      },
+      isPopulationMaxed: function () {
+        console.log(this.people)
+        return {
+          'button-disabled': (this.people > 99)
         }
       }
     },
