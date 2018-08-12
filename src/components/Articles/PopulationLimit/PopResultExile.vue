@@ -2,7 +2,8 @@
   <div class="pop-exile">
     <h3>Exile</h3>
     <img :src="spacePic" height="300px" width="400px"></img>
-    <p>@todo add dialog</p>
+    <p>Using the vessel previously acquired, you forcefully exile vagrants and criminals. You inform them that they are to take the vessel and find somewhere else to live.
+    In addition, you leave them with a promise that if they return they will be shot on sight.  </p>
     <p>25 people were exiled from the station.</p>
     <router-link
       class="button button-green"

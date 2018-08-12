@@ -3,7 +3,9 @@
 
 <template>
   <div class="pop-result-youth">
-    <p>The youth have been purged.</p>
+    <p>As your request rang through the station, the station's youth immediately rose up arms against your command. Strategically, the youth were able to capture and execute much a majority of the station's peace keepers.
+    After a bloody battle in the forum, in which the youth lost a majority of their fighters, the youth finally conceded.
+    After witnessing the aggression of the youth first hand, the peace keepers force the remaining youth into airlock. </p>
     <p>+50 people lost!</p>
     <p>+25 unrest!</p>
     <p>+25 damage!</p>

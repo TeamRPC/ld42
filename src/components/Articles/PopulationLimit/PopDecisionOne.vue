@@ -5,7 +5,7 @@
   <div class="pop">
     <h2>Population Limit</h2>
     <img :src="station"></img>
-    <p>Space Station 7 cannot support this population. What will you do?</p>
+    <p>Space Station 7 cannot support this population, "We are Running out of Space!". What will you do?</p>
     <a
       class="button button-red"
       @click.prevent="purgeStation()"

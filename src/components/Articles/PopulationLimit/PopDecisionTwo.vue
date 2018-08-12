@@ -3,9 +3,9 @@
 
 <template>
   <div class="pop-purge-who">
-    <h2>Who will you purge?</h2>
+    <h2>The people on the station fit into three distinct age groups. Who will you purge?</h2>
     <img :src="spacePic" width="300px" height="200px"></img>
-    <p>@todo add dialog about having to purge a specific group.</p>
+    <p></p>
     <a
       class="button button-red"
       @click.prevent="purgeElderly()"
