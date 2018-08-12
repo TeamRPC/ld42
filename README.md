@@ -25,6 +25,15 @@ npm run build
 npm run build --report
 ```
 
+### publish
+
+```
+npm run build
+git commit ...
+git push origin master
+npm run publish
+```
+
 ## Game notes
 
 ### stats
