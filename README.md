@@ -45,6 +45,7 @@ npm run build --report
     * [x] Story concept
     * [x] Game engine
   * [ ] Search for @TODO tags and replace with real content
+  * [ ] Remove history mode in vue router so players cant go back a page and cheat
 
 
 ## Attribution
@@ -55,4 +56,5 @@ https://opengameart.org/content/assassin-bot CC-BY 3.0
 https://opengameart.org/content/sound-effects-sfx005 CC-BY 3.0
 
 ## Flowcharts
+
 https://drive.google.com/open?id=1j04f4fcK-kD7kGIDGlu_LkenM6ZxEO4_

@@ -22,14 +22,21 @@
           scale="Y"
           origin="bottom"
           :beneficial="false"
-          label="danger"
+          label="debris"
         />
       </div>
       <div class="bar3">
         <progress-bar
-          :value="fear"
+          :value="unrest"
           :beneficial="false"
           label="unrest"
+        />
+      </div>
+      <div class="bar4">
+        <progress-bar
+          :value="damage"
+          :beneficial="false"
+          label="damage"
         />
       </div>
     </div>
@@ -49,8 +56,8 @@
     props: {
       people: Number,
       debris: Number,
-      praise: Number,
-      fear: Number
+      unrest: Number,
+      damage: Number
     }
   }
 </script>

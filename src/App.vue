@@ -36,10 +36,10 @@
       <aside class="aside aside-1">Inventory</aside>
       <aside class="aside aside-2">
         <stats
-          :people="stats.people"
-          :debris="stats.debris"
-          :fear="stats.fear"
-          :praise="stats.praise"
+          :people="people"
+          :debris="debris"
+          :unrest="unrest"
+          :damage="damage"
         ></stats>
       </aside>
       <footer class="footer">
@@ -60,6 +60,7 @@
   import Aplayer from 'vue-aplayer'
   // import warp from '@/assets/FX043.mp3'
   // import VueAudio from 'vue-audio';
+  import { mapGetters, mapActions } from 'vuex'
 
   import Stats from '@/components/GUI/Stats'
 
@@ -88,27 +89,17 @@
       Aplayer,
       Stats
     },
+    computed: mapGetters([
+      'people',
+      'debris',
+      'unrest',
+      'damage'
+    ]),
+    methods: mapActions([
+      'addDebris'
+    ]),
     data () {
       return {
-        stats: {
-          people: 50,
-          peopleMax: 10000,
-          debris: 300,
-          debrisMax: 600,
-          praise: 10,
-          praiseMax: 100,
-          fear: 15,
-          fearMax: 100
-        },
-        computed: {
-          people: function () {
-            // `this` points to the vm instance
-            return this.people / this.peopleMax
-          },
-          debris: function () {
-            return this.debris / this.debrisMax
-          }
-        },
         music: {
           title: 'Stepping Stones',
           artist: 'Matthew Pablo',
@@ -242,11 +233,11 @@
 }
 
 .aside-1 {
-  background: #FFAA5C;
+  background: white;
 }
 
 .aside-2 {
-  background: #FFAA5C;
+  background: white;
 }
 
 @media all and (min-width: 600px) {
