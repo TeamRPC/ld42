@@ -8,7 +8,9 @@
         :key="item.name"
         :name="item.name"
         :image="item.image"
+        :label="item.label"
         :quantity="item.quantity"
+        :hidden="item.hidden"
       ></Item>
     </div>
   </div>
@@ -28,7 +30,7 @@
       inventory: {
         type: Array,
         default: [
-          { name: 'Graphene Dust' }
+          { label: 'Graphene Dust' }
         ]
       }
     }
@@ -39,7 +41,7 @@
 <style scoped>
   .inventoryWrapper {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
   }
 
   .inventoryWrapper > * {

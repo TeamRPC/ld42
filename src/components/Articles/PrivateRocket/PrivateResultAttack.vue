@@ -3,9 +3,10 @@
 
 <template>
   <div class="private-rocket">
-    <p>The vessel has docked with Station 7.</p>
-    <p>+25 people accumulated.</p>
+    <p>The vessel has attacked you.</p>
     <p>+25 unrest!</p>
+    <p>+25 damage sustained!</p>
+    <p>25 people were killed!</p>
     <router-link
       class="button button-green"
       to="/"
@@ -17,7 +18,7 @@
 
 <script>
   export default {
-    name: 'PrivateResultIgnore'
+    name: 'PrivateResultAttack'
   }
 </script>
 

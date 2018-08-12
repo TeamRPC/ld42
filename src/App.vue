@@ -13,12 +13,35 @@
         <li>
           <router-link to="/">Home</router-link>
         </li>
-
-
-
-        <button class="button button-blue" id="devtoolsbtn" v-on:click=" collapsed = !collapsed">🖥 Developer Tools️</button>
-
+        <li>
+          <button
+            class="button button-blue"
+            @onclick="commit('consumeInventory', 'Transparent Aluminium Repair Kit')"
+          >
+          Consume Inventory Item
+          </button>
+        </li>
+        <li>
+          <button
+            class="button button-blue"
+            id="devtoolsbtn"
+            v-on:click=" collapsed = !collapsed"
+          >
+            🖥 Developer Tools️
+          </button>
+        </li>
+        <li>
+          <button class="button button-blue" @click="sfxTest">SFX Test</button>
+        </li>
       </ul>
+
+      <aplayer
+        :music="sfx"
+        :mini="false"
+        :controls="true"
+        :mutex="false"
+        ref="sfxPlayer"
+      />
     </div>
 
     <div class="wrapper">
@@ -49,11 +72,14 @@
         ></stats>
       </aside>
       <footer class="footer">
+        <h4>Music</h4>
         <aplayer
           :music="music"
           :list="musicList"
           :mini="false"
           :controls="true"
+          :mutex="false"
+          ref="musicPlayer"
         />
 
         <button id="devtoolsbtn" v-on:click=" collapsed = !collapsed">🖥 Developer Tools️</button>
@@ -69,7 +95,6 @@
 
 <script>
   import Aplayer from 'vue-aplayer'
-  // import warp from '@/assets/FX043.mp3'
   // import VueAudio from 'vue-audio';
   import { mapGetters, mapActions } from 'vuex'
 
@@ -95,6 +120,9 @@
   import hardMp3 from '@/assets/hard.mp3'
   import hardPic from '@/assets/hard.jpg'
 
+  import hailMp3 from '@/assets/FX049.mp3'
+  // import warpMp3 from '@/assets/FX043.mp3'
+
   export default {
     name: 'App',
     components: {
@@ -109,10 +137,16 @@
       'damage',
       'inventory'
     ]),
-    methods: mapActions([
-      'addDebris',
-      'grantInventory'
-    ]),
+    methods: {
+      ...mapActions([
+        'addDebris',
+        'grantInventory'
+      ]),
+      sfxTest: function () {
+        console.log(this.$refs.musicPlayer)
+        this.$refs.sfxPlayer.onSelectSong(this.$data.sfx)
+      }
+    },
     data () {
       return {
         music: {
@@ -165,6 +199,10 @@
             pic: feet
           }
         ],
+        sfx: {
+          title: 'Hail',
+          src: hailMp3
+        },
         title: 'To Grow without Space',
         collapsed: true
       }

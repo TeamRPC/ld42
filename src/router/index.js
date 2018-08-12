@@ -10,6 +10,9 @@ import PrivateDecisionTwo from '@/components/Articles/PrivateRocket/PrivateDecis
 import PrivateResultShoot from '@/components/Articles/PrivateRocket/PrivateResultShoot'
 import PrivateResultIgnore from '@/components/Articles/PrivateRocket/PrivateResultIgnore'
 import PrivateResultHail from '@/components/Articles/PrivateRocket/PrivateResultHail'
+import PrivateResultAttack from '@/components/Articles/PrivateRocket/PrivateResultAttack'
+import PrivateResultLeave from '@/components/Articles/PrivateRocket/PrivateResultLeave'
+import PrivateResultAllow from '@/components/Articles/PrivateRocket/PrivateResultAllow'
 
 Vue.use(Router)
 
@@ -83,6 +86,27 @@ export default new Router({
       components: {
         default: PrivateResultHail,
         content: PrivateResultHail
+      }
+    },
+    {
+      path: '/private-result-attack',
+      components: {
+        default: PrivateResultAttack,
+        content: PrivateResultAttack
+      }
+    },
+    {
+      path: '/private-result-leave',
+      components: {
+        default: PrivateResultLeave,
+        content: PrivateResultLeave
+      }
+    },
+    {
+      path: '/private-result-allow',
+      components: {
+        default: PrivateResultAllow,
+        content: PrivateResultAllow
       }
     }
   ]

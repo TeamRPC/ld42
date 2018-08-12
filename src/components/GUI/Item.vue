@@ -2,14 +2,14 @@
 
 
 <template>
-  <div class="item-wrapper">
+  <div class="item-wrapper" :class="{'invis': hidden}">
     <div class="item">
       <img
         width="100px"
         height="100px"
         :src="image"
       ></img>
-      <h4>{{ name }}</h4>
+      <h4>{{ label }}</h4>
       <p>(qty {{ quantity }})</p>
     </div>
   </div>
@@ -21,11 +21,15 @@
   import jar from '@/assets/empty-jar.png'
 
   export default {
-    name: 'ProgressBar',
+    name: 'Item',
     props: {
       name: {
         type: String,
-        default: 'Pocket Lint'
+        default: 'void-rondo'
+      },
+      label: {
+        type: String,
+        default: 'Void Rondo'
       },
       image: {
         type: String,
@@ -34,6 +38,10 @@
       quantity: {
         type: Number,
         default: 1
+      },
+      hidden: {
+        type: Boolean,
+        default: false
       }
     },
     computed: {
@@ -44,6 +52,10 @@
 
 
 <style scoped>
+  .invis {
+    display: none;
+  }
+
   .progressbar {
     display: flex;
     flex-flow: column nowrap;

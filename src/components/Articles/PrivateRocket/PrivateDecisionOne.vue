@@ -7,14 +7,16 @@
     <p>An unknown vessel is approaching. What will you do?</p>
     <a
       class="button button-red"
-      @click.prevent="addDebrisThenNav()"
+      @click.prevent="shootVessel()"
     >
       Shoot it
     </a>
-    <router-link
+    <a
       class="button button-blue"
-      to="/null"
-    >Hail it</router-link>
+      @click.prevent="hailVessel()"
+    >
+      Hail it
+    </a>
     <a
       class="button button-gray"
       @click.prevent="ignoreVessel()"
@@ -29,6 +31,7 @@
 <script>
   import store from '@/store'
   import { mapGetters, mapActions } from 'vuex'
+  import shipPicture from '@/assets/ship-side.png'
 
   export default {
     name: 'PrivateDecisionOne',
@@ -46,9 +49,12 @@
     ]),
     data () {
       return {
-        addDebrisThenNav: function () {
+        shootVessel: function () {
           store.dispatch('addDebris', 25)
-          store.dispatch('grantInventory', 'private')
+          store.dispatch('grantInventory', {
+            name: 'vessel',
+            hidden: true
+          })
 
           this.$router.push({
             path: '/private-result-shoot'
@@ -57,10 +63,20 @@
         ignoreVessel: function () {
           store.dispatch('addPeople', 25)
           store.dispatch('addUnrest', 25)
-          store.dispatch('grantInventory', 'private')
+          store.dispatch('grantInventory', {
+            name: 'vessel',
+            label: 'Vessel',
+            image: shipPicture,
+            hidden: false
+          })
 
-          this.$router.replace({
+          this.$router.push({
             path: '/private-result-ignore'
+          })
+        },
+        hailVessel: function () {
+          this.$router.push({
+            path: '/private-decision-2'
           })
         }
       }

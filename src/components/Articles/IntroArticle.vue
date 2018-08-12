@@ -48,7 +48,7 @@
       ]),
       isScenarioCompleted: function () {
         return {
-          'button-disabled': this.inventory.includes('private')
+          'button-disabled': this.inventory.filter(item => item.name === 'vessel').length
         }
       }
     },
