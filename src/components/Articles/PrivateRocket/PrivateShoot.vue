@@ -17,7 +17,7 @@
 
 <script>
   export default {
-    name: 'PrivateResultShoot'
+    name: 'PrivateShoot'
   }
 </script>
 

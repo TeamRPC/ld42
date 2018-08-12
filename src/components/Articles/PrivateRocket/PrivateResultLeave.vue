@@ -3,7 +3,7 @@
 
 <template>
   <div class="private-rocket">
-    <p>The vessel has left the sector.</p>
+    <p>Afraid of the consequences, the small vessel reluctantly turns away from Station 7. The vessel leaves the sector.</p>
     <p>-25 unrest achieved.</p>
     <router-link
       class="button button-green"

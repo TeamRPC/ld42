@@ -4,7 +4,7 @@
 <template>
   <div class="private-rocket">
     <h2>Unknown Vessel</h2>
-    <p>An unknown vessel is approaching. What will you do?</p>
+    <p>The unknown vessel has set a course for Station 7. What will you do?</p>
     <a
       class="button button-red"
       @click.prevent="shootVessel()"

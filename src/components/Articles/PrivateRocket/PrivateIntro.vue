@@ -7,7 +7,8 @@
     <img
       :src="shipPicture"
     ></img>
-    <p>@TODO insert description here</p>
+    <p>After nineteen months of silence from the planet Earth, most individuals have given up hope that their loved ones survived the war.
+     To your disbelief, an unmarked civilian grade vessel exits Earth's atmosphere.</p>
     <router-link
       class="button button-green"
       to="/private-decision-1"
