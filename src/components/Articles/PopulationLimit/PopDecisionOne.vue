@@ -3,7 +3,8 @@
 
 <template>
   <div class="pop">
-    <h2Population Limit</h2>
+    <h2>Population Limit</h2>
+    <img :src="station"></img>
     <p>Space Station 7 cannot support this population. What will you do?</p>
     <a
       class="button button-red"
@@ -19,15 +20,13 @@
     </a>
     <a
       class="button button-red"
-      :class="{'invis': hidden}"
+      :class="isVesselInInventory"
       @click.prevent="exileVessel()"
     >
       Exile the Vessel
     </a>
   </div>
 </template>
-
-
 
 <script>
   import store from '@/store'
@@ -36,12 +35,23 @@
 
   export default {
     name: 'PopDecisionOne',
-    computed: mapGetters([
-      'people',
-      'debris',
-      'unrest',
-      'damage'
-    ]),
+    computed: {
+      ...mapGetters([
+        'people',
+        'debris',
+        'unrest',
+        'damage',
+        'inventory'
+      ]),
+      station: () => station,
+      isVesselInInventory: function () {
+        return {
+          'invis': this.inventory.filter(
+            item => item.name === 'vessel'
+          ).length === 0
+        }
+      }
+    },
     methods: mapActions([
       'addDebris',
       'setDebris',
@@ -50,6 +60,7 @@
     ]),
     data () {
       return {
+        hidden: true,
         purgeStation: function () {
           store.dispatch('addDebris', 25)
           store.dispatch('grantInventory', {
@@ -58,12 +69,13 @@
           })
 
           this.$router.push({
-            path: '/private-result-shoot'
+            path: '/pop-decision-2'
           })
         },
         ignoreStation: function () {
-          store.dispatch('addPeople', 25)
-          store.dispatch('addUnrest', 25)
+          store.dispatch('subtractPeople', 25)
+          store.dispatch('addUnrest', 50)
+          store.dispatch('addDamage', 50)
 
           this.$router.push({
             path: '/pop-result-ignore'
@@ -79,6 +91,8 @@
   }
 </script>
 
-
 <style scoped>
+  .invis {
+    display: none;
+  }
 </style>

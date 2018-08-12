@@ -10,7 +10,7 @@
     <p>Space Station 7 is full!</p>
     <router-link
       class="button button-green"
-      to="/private-decision-1"
+      to="/pop-decision-1"
     >Next</router-link>
   </div>
 </template>

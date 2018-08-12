@@ -3,8 +3,8 @@
 
 <template>
   <div class="private-rocket">
-    <p>The vessel has left the sector.</p>
-    <p>-25 unrest achieved.</p>
+    <p>The elderly have been purged.</p>
+    <p>25 debris accumulated.</p>
     <router-link
       class="button button-green"
       to="/"
@@ -16,7 +16,7 @@
 
 <script>
   export default {
-    name: 'PrivateResultLeave'
+    name: 'PopResultElderly'
   }
 </script>
 

@@ -2,10 +2,12 @@
 
 
 <template>
-  <div class="private-rocket">
-    <p>The vessel has docked with Station 7.</p>
-    <p>+25 people accumulated.</p>
-    <p>+25 unrest!</p>
+  <div class="panic">
+    <h3>Panic</h3>
+    <p>Riots have broken out!</p>
+    <p>25 people died!</p>
+    <p>+50 unrest!</p>
+    <p>+50 damage!</p>
     <router-link
       class="button button-green"
       to="/"
@@ -17,7 +19,7 @@
 
 <script>
   export default {
-    name: 'PrivateResultIgnore'
+    name: 'PopResultIgnore'
   }
 </script>
 

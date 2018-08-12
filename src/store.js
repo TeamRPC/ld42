@@ -119,6 +119,7 @@ const actions = {
     var ppl = state.state.people
     if (ppl - amt < 1) {
       state.commit('loseGame')
+      state.commit('setPeople', 0)
     } else {
       state.commit('subtractPeople', amt)
     }

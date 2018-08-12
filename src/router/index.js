@@ -1,15 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import IntroArticle from '@/components/Articles/IntroArticle'
-import ChamberArticle from '@/components/Articles/ChamberArticle'
-import HallwayArticle from '@/components/Articles/HallwayArticle'
 import PrivateIntro from '@/components/Articles/PrivateRocket/PrivateIntro'
-import PrivateShoot from '@/components/Articles/PrivateRocket/PrivateShoot'
 import PrivateDecisionOne from '@/components/Articles/PrivateRocket/PrivateDecisionOne'
 import PrivateDecisionTwo from '@/components/Articles/PrivateRocket/PrivateDecisionTwo'
 import PrivateResultShoot from '@/components/Articles/PrivateRocket/PrivateResultShoot'
 import PrivateResultIgnore from '@/components/Articles/PrivateRocket/PrivateResultIgnore'
-import PrivateResultHail from '@/components/Articles/PrivateRocket/PrivateResultHail'
 import PrivateResultAttack from '@/components/Articles/PrivateRocket/PrivateResultAttack'
 import PrivateResultLeave from '@/components/Articles/PrivateRocket/PrivateResultLeave'
 import PrivateResultAllow from '@/components/Articles/PrivateRocket/PrivateResultAllow'
@@ -18,13 +14,11 @@ import PopIntro from '@/components/Articles/PopulationLimit/PopIntro'
 import PopShoot from '@/components/Articles/PopulationLimit/PopShoot'
 import PopDecisionOne from '@/components/Articles/PopulationLimit/PopDecisionOne'
 import PopDecisionTwo from '@/components/Articles/PopulationLimit/PopDecisionTwo'
-import PopResultShoot from '@/components/Articles/PopulationLimit/PopResultShoot'
+import PopResultExile from '@/components/Articles/PopulationLimit/PopResultExile'
 import PopResultIgnore from '@/components/Articles/PopulationLimit/PopResultIgnore'
-import PopResultHail from '@/components/Articles/PopulationLimit/PopResultHail'
-import PopResultAttack from '@/components/Articles/PopulationLimit/PopResultAttack'
-import PopResultLeave from '@/components/Articles/PopulationLimit/PopResultLeave'
-import PopResultAllow from '@/components/Articles/PopulationLimit/PopResultAllow'
-
+import PopResultElderly from '@/components/Articles/PopulationLimit/PopResultElderly'
+import PopResultAdults from '@/components/Articles/PopulationLimit/PopResultAdults'
+import PopResultYouth from '@/components/Articles/PopulationLimit/PopResultYouth'
 
 Vue.use(Router)
 
@@ -39,31 +33,10 @@ export default new Router({
       }
     },
     {
-      path: '/game',
-      components: {
-        default: ChamberArticle,
-        content: ChamberArticle
-      }
-    },
-    {
-      path: '/hallway',
-      components: {
-        default: HallwayArticle,
-        content: HallwayArticle
-      }
-    },
-    {
       path: '/private',
       components: {
         default: PrivateIntro,
         content: PrivateIntro
-      }
-    },
-    {
-      path: '/private-shoot',
-      components: {
-        default: PrivateShoot,
-        content: PrivateShoot
       }
     },
     { path: '/private-decision-1',
@@ -91,13 +64,6 @@ export default new Router({
       components: {
         default: PrivateResultIgnore,
         content: PrivateResultIgnore
-      }
-    },
-    {
-      path: '/private-result-hail',
-      components: {
-        default: PrivateResultHail,
-        content: PrivateResultHail
       }
     },
     {
@@ -149,10 +115,10 @@ export default new Router({
       }
     },
     {
-      path: '/pop-result-shoot',
+      path: '/pop-result-exile',
       components: {
-        default: PopResultShoot,
-        content: PopResultShoot
+        default: PopResultExile,
+        content: PopResultExile
       }
     },
     {
@@ -163,31 +129,24 @@ export default new Router({
       }
     },
     {
-      path: '/pop-result-hail',
+      path: '/pop-result-elderly',
       components: {
-        default: PopResultHail,
-        content: PopResultHail
+        default: PopResultElderly,
+        content: PopResultElderly
       }
     },
     {
-      path: '/pop-result-attack',
+      path: '/pop-result-adults',
       components: {
-        default: PopResultAttack,
-        content: PopResultAttack
+        default: PopResultAdults,
+        content: PopResultAdults
       }
     },
     {
-      path: '/pop-result-leave',
+      path: '/pop-result-youth',
       components: {
-        default: PopResultLeave,
-        content: PopResultLeave
-      }
-    },
-    {
-      path: '/pop-result-allow',
-      components: {
-        default: PopResultAllow,
-        content: PopResultAllow
+        default: PopResultYouth,
+        content: PopResultYouth
       }
     }
   ]

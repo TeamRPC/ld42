@@ -2,11 +2,12 @@
 
 
 <template>
-  <div class="private-rocket">
-    <p>The vessel has attacked you.</p>
+  <div class="pop-result-adults">
+    <p>The adults have been purged.</p>
     <p>+25 unrest!</p>
-    <p>+25 damage sustained!</p>
-    <p>25 people were killed!</p>
+    <p>+25 debris accumulated.</p>
+    <p>+75 people lost!</p>
+    <p>+25 damage!</p>
     <router-link
       class="button button-green"
       to="/"
@@ -18,7 +19,7 @@
 
 <script>
   export default {
-    name: 'PrivateResultAttack'
+    name: 'PopResultAdults'
   }
 </script>
 
