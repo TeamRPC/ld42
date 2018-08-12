@@ -13,12 +13,7 @@
         <li>
           <router-link to="/">Home</router-link>
         </li>
-        <aplayer
-          :music="music"
-          :list="musicList"
-          :mini="false"
-          :controls="true"
-        />
+
 
 
         <button class="button button-blue" id="devtoolsbtn" v-on:click=" collapsed = !collapsed">🖥 Developer Tools️</button>
@@ -27,13 +22,24 @@
     </div>
 
     <div class="wrapper">
-      <header class="header">{{ title }}</header>
+      <header class="header">
+        <router-link
+          class="nostyle"
+          to="/"
+        >
+          {{ title }}
+        </router-link>
+      </header>
       <div class="main">
         <transition class="child-view" name="fade" mode="out-in">
           <router-view name="content"></router-view>
         </transition>
       </div>
-      <aside class="aside aside-1">Inventory</aside>
+      <aside class="aside aside-1">
+        <Inventory
+          :inventory="inventory"
+        ></Inventory>
+      </aside>
       <aside class="aside aside-2">
         <stats
           :people="people"
@@ -43,7 +49,12 @@
         ></stats>
       </aside>
       <footer class="footer">
-        Footer
+        <aplayer
+          :music="music"
+          :list="musicList"
+          :mini="false"
+          :controls="true"
+        />
 
         <button id="devtoolsbtn" v-on:click=" collapsed = !collapsed">🖥 Developer Tools️</button>
 
@@ -63,6 +74,7 @@
   import { mapGetters, mapActions } from 'vuex'
 
   import Stats from '@/components/GUI/Stats'
+  import Inventory from '@/components/GUI/Inventory'
 
   import stones from '@/assets/Stepping Stones.mp3'
   import feet from '@/assets/feet.png'
@@ -87,26 +99,35 @@
     name: 'App',
     components: {
       Aplayer,
-      Stats
+      Stats,
+      Inventory
     },
     computed: mapGetters([
       'people',
       'debris',
       'unrest',
-      'damage'
+      'damage',
+      'inventory'
     ]),
     methods: mapActions([
-      'addDebris'
+      'addDebris',
+      'grantInventory'
     ]),
     data () {
       return {
         music: {
-          title: 'Stepping Stones',
-          artist: 'Matthew Pablo',
-          src: stones,
-          pic: feet
+          title: 'lazer2',
+          artist: 'Chris Grimmett',
+          src: lazerMp3,
+          pic: lazerPic
         },
         musicList: [
+          {
+            title: 'lazer2',
+            artist: 'Chris Grimmett',
+            src: lazerMp3,
+            pic: lazerPic
+          },
           {
             title: 'MANCY',
             artist: 'Chris Grimmett',
@@ -138,14 +159,14 @@
             pic: eyePic
           },
           {
-            title: 'lazer2',
-            artist: 'Chris Grimmett',
-            src: lazerMp3,
-            pic: lazerPic
+            title: 'Stepping Stones',
+            artist: 'Matthew Pablo',
+            src: stones,
+            pic: feet
           }
         ],
-        title: "WE RUNNIN' OUTTA SPACE!",
-        collapsed: false
+        title: 'To Grow without Space',
+        collapsed: true
       }
     }
   }
@@ -155,7 +176,9 @@
 
 
 <style>
-
+a {
+  text-decoration: none;
+}
 
 .is-collapsed {
 	display: none;
@@ -273,5 +296,9 @@ body {
 .button-red {background-color: #f44336;} /* Red */
 .button-gray {background-color: #e7e7e7; color: black;} /* Gray */
 .button-black {background-color: #555555;} /* Black */
+.button-disabled {
+  background-color: #555555;
+  pointer-events: none;
+}
 
 </style>

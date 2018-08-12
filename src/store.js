@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import toolbox from '@/assets/toolbox.png'
+import candy from '@/assets/candy.png'
 
 Vue.use(Vuex)
 
@@ -8,7 +10,18 @@ const state = {
   debris: 30,
   unrest: 15,
   damage: 0,
-  log: []
+  inventory: [
+    {
+      name: 'Transparent Aluminium Repair Kit',
+      image: toolbox,
+      quantity: 1
+    },
+    {
+      name: 'Space Candy',
+      image: candy,
+      quantity: 2
+    }
+  ]
 }
 
 const mutations = {
@@ -17,21 +30,21 @@ const mutations = {
   },
   addDebris (state, amt) {
     state.debris += amt
-    state.log.push({type: 'debris', amount: amt})
   },
   addDamage (state, amt) {
     state.damage += amt
-    state.log.push({type: 'debris', amount: amt})
   },
   setDamage (state, amt) {
     state.damage = amt
   },
   addUnease (state, amt) {
     state.unease += amt
-    state.log.push({type: 'unease', amount: amt})
   },
   setUnease (state, amt) {
     state.unease = amt
+  },
+  grantInventory (state, item) {
+    state.inventory.push(item)
   }
 }
 
@@ -51,6 +64,9 @@ const actions = {
     } else {
       state.commit('addUnease', amt)
     }
+  },
+  grantInventory (state, item) {
+    state.commit('grantInventory', item)
   }
 }
 
@@ -58,7 +74,8 @@ const getters = {
   debris: state => state.debris,
   people: state => state.people,
   unrest: state => state.unrest,
-  damage: state => state.damage
+  damage: state => state.damage,
+  inventory: state => state.inventory
 }
 
 export default new Vuex.Store({

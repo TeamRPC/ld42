@@ -4,7 +4,7 @@
 <template>
   <div class="private-rocket">
     <h2>Unknown Vessel</h2>
-    <p>An unkown vessel is approaching. What will you do?</p>
+    <p>An unknown vessel is approaching. What will you do?</p>
     <a
       class="button button-red"
       @click.prevent="addDebrisThenNav()"
@@ -48,31 +48,19 @@
       return {
         addDebrisThenNav: function () {
           store.dispatch('addDebris', 25)
+          store.dispatch('grantInventory', 'private')
 
-          this.$router.replace({
-            name: 'DecisionResults',
-            params: {
-              dialog: 'The vessel was destroyed.',
-              results: {
-                debris: '+25'
-              },
-              nextPage: '/'
-            }
+          this.$router.push({
+            path: '/private-result-shoot'
           })
         },
         ignoreVessel: function () {
           store.dispatch('addPeople', 25)
           store.dispatch('addUnrest', 25)
+          store.dispatch('grantInventory', 'private')
 
           this.$router.replace({
-            path: '/private-ignore',
-            props: {
-              dialog: '',
-              results: {
-                debris: '+25'
-              },
-              nextPage: '/private-ignore'
-            }
+            path: '/private-result-ignore'
           })
         }
       }
