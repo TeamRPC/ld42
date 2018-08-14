@@ -29,7 +29,8 @@ npm run build --report
 
 ```
 npm run build
-git commit ...
+git add (...)
+git commit (...)
 git push origin master
 npm run publish
 ```
