@@ -35,6 +35,12 @@ git push origin master
 npm run publish
 ```
 
+chaned together, the above can look like this--
+
+```
+npm run build && git add dist/ && git commit -m 'build with publicPath trailing slash' && git push origin master && npm run publish
+```
+
 ## Game notes
 
 ### stats
@@ -69,4 +75,4 @@ https://opengameart.org/content/wheels-cabinet CC-BY 3.0
 
 ## Flowcharts
 
-https://drive.google.com/open?id=1j04f4fcK-kD7kGIDGlu_LkenM6ZxEO4_
+https://drive.google.com/drive/folders/1j04f4fcK-kD7kGIDGlu_LkenM6ZxEO4_
