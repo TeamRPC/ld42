@@ -1,32 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import toolbox from '@/assets/toolbox.png'
-import candy from '@/assets/candy.png'
+import defaultState from '@/defaultState'
 
 Vue.use(Vuex)
 
-const state = {
-  people: 50,
-  debris: 30,
-  unrest: 15,
-  damage: 0,
-  lost: false,
-  won: false,
-  inventory: [
-    {
-      label: 'Transparent Aluminium Repair Kit',
-      name: 'kit',
-      image: toolbox,
-      quantity: 1
-    },
-    {
-      label: 'Space Candy',
-      name: 'candy',
-      image: candy,
-      quantity: 2
-    }
-  ]
-}
+const state = defaultState.getStartingState()
 
 const mutations = {
   setDebris (state, amt) {
@@ -57,9 +35,15 @@ const mutations = {
     state.inventory.push(item)
   },
   consumeInventory (state, item) {
-    console.log(state.inventory.filter(i => i.name === item))
-    // var index = state.inventory.indexOf(item)
-    // if (index !== -1) array.splice(index, 1)
+    var matchingItemIndex = state.inventory.findIndex(inv => inv.name === item)
+    if (state.inventory[matchingItemIndex].quantity === 1) {
+      state.inventory = state.inventory.filter(i => i.name !== item)
+    } else {
+      state.inventory[matchingItemIndex].quantity -= 1
+    }
+  },
+  clearInventory (state, item) {
+    state.inventory = defaultState.getStartingState().inventory
   },
   addPeople (state, amt) {
     state.people += amt
@@ -85,6 +69,9 @@ const actions = {
       state.commit('addDebris', amt)
     }
   },
+  setDebris (state, amt) {
+    state.commit('setDebris', amt)
+  },
   addUnrest (state, amt) {
     if (state.state.unrest > 99) {
       state.commit('setUnrest', 0)
@@ -102,11 +89,17 @@ const actions = {
       state.commit('subtractUnrest', amt)
     }
   },
+  setUnrest (state, amt) {
+    state.commit('setUnrest', amt)
+  },
   grantInventory (state, item) {
     state.commit('grantInventory', item)
   },
   consumeInventory (state, item) {
     state.commit('consumeInventory', item)
+  },
+  clearInventory (state) {
+    state.commit('clearInventory')
   },
   addPeople (state, amt) {
     if (state.state.people > 100) {
@@ -114,6 +107,9 @@ const actions = {
       state.commit('addDamage', 5)
     }
     state.commit('addPeople', amt)
+  },
+  setPeople (state, amt) {
+    state.commit('setPeople', amt)
   },
   subtractPeople (state, amt) {
     var ppl = state.state.people
@@ -131,6 +127,9 @@ const actions = {
     } else {
       state.commit('addDamage', amt)
     }
+  },
+  setDamage (state, amt) {
+    state.commit('setDamage', amt)
   }
 }
 

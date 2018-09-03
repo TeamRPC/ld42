@@ -32,6 +32,7 @@
   import store from '@/store'
   import { mapGetters, mapActions } from 'vuex'
   import station from '@/assets/station-2.png'
+  import panic from '@/assets/panic.mp3'
 
   export default {
     name: 'PopDecisionOne',
@@ -52,12 +53,17 @@
         }
       }
     },
-    methods: mapActions([
-      'addDebris',
-      'setDebris',
-      'addDamage',
-      'setDamage'
-    ]),
+    methods: {
+      ...mapActions([
+        'addDebris',
+        'setDebris',
+        'addDamage',
+        'setDamage'
+      ]),
+      playSfx: function (sfx) {
+        this.$parent.playSfx(sfx)
+      }
+    },
     data () {
       return {
         hidden: true,
@@ -76,6 +82,10 @@
           store.dispatch('subtractPeople', 25)
           store.dispatch('addUnrest', 50)
           store.dispatch('addDamage', 50)
+          this.playSfx({
+            title: 'panic',
+            src: panic
+          })
 
           this.$router.push({
             path: '/pop-result-ignore'

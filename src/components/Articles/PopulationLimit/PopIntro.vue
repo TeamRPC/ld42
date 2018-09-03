@@ -3,7 +3,8 @@
 
 <template>
   <div class="pop">
-    <h2>Station 7 is low on food and water. The Station will not survive if our population stays this numerous. As highest ranking officer, you are going to have to make a tough decision.</h2>
+    <h2>Population Limit</h2>
+    <p>Station 7 is low on food and water. The Station will not survive if our population stays this numerous. As highest ranking officer, you are going to have to make a tough decision.</p>
     <img
       :src="feet"
       width="200px"

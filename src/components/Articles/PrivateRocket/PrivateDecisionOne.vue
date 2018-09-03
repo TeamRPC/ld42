@@ -32,6 +32,8 @@
   import store from '@/store'
   import { mapGetters, mapActions } from 'vuex'
   import shipPicture from '@/assets/ship-side.png'
+  import lazerpan from '@/assets/lazerpan.mp3'
+  import hail from '@/assets/FX049.mp3'
 
   export default {
     name: 'PrivateDecisionOne',
@@ -41,12 +43,17 @@
       'unrest',
       'damage'
     ]),
-    methods: mapActions([
-      'addDebris',
-      'setDebris',
-      'addDamage',
-      'setDamage'
-    ]),
+    methods: {
+      ...mapActions([
+        'addDebris',
+        'setDebris',
+        'addDamage',
+        'setDamage'
+      ]),
+      playSfx: function (sfx) {
+        this.$parent.playSfx(sfx)
+      }
+    },
     data () {
       return {
         shootVessel: function () {
@@ -54,6 +61,10 @@
           store.dispatch('grantInventory', {
             name: 'vessel',
             hidden: true
+          })
+          this.playSfx({
+            title: 'Lazer Pan Boom',
+            src: lazerpan
           })
 
           this.$router.push({
@@ -75,6 +86,10 @@
           })
         },
         hailVessel: function () {
+          this.playSfx({
+            title: 'hail',
+            src: hail
+          })
           this.$router.push({
             path: '/private-decision-2'
           })

@@ -27,6 +27,9 @@
   import spacePic from '@/assets/space-green.jpg'
   import store from '@/store'
   import { mapGetters, mapActions } from 'vuex'
+  import scream from '@/assets/scream.mp3'
+  import sadness from '@/assets/sadness.mp3'
+  import death from '@/assets/death.mp3'
 
   export default {
     name: 'PopDecisionTwo',
@@ -39,19 +42,28 @@
       ]),
       spacePic: () => spacePic
     },
-    methods: mapActions([
-      'addDebris',
-      'setDebris',
-      'addDamage',
-      'setDamage',
-      'addPeople',
-      'addUnrest'
-    ]),
+    methods: {
+      ...mapActions([
+        'addDebris',
+        'setDebris',
+        'addDamage',
+        'setDamage',
+        'addPeople',
+        'addUnrest'
+      ]),
+      playSfx: function (sfx) {
+        this.$parent.playSfx(sfx)
+      }
+    },
     data () {
       return {
         purgeElderly: function () {
           store.dispatch('subtractPeople', 25)
           store.dispatch('addDebris', 25)
+          this.playSfx({
+            title: 'death',
+            src: death
+          })
 
           this.$router.push({
             path: '/pop-result-elderly'
@@ -62,6 +74,10 @@
           store.dispatch('addDebris', 25)
           store.dispatch('subtractPeople', 75)
           store.dispatch('addDamage', 25)
+          this.playSfx({
+            title: 'scream',
+            src: scream
+          })
 
           this.$router.push({
             path: '/pop-result-adults'
@@ -72,6 +88,10 @@
           store.dispatch('addDebris', 25)
           store.dispatch('subtractPeople', 50)
           store.dispatch('addDamage', 25)
+          this.playSfx({
+            title: 'sadness',
+            src: sadness
+          })
 
           this.$router.push({
             path: '/pop-result-youth'

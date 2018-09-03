@@ -37,6 +37,7 @@
 
       <aplayer
         :music="sfx"
+        :musicList="sfxList"
         :mini="false"
         :controls="true"
         :mutex="false"
@@ -80,6 +81,7 @@
           :controls="true"
           :mutex="false"
           ref="musicPlayer"
+          :volume="0.5"
         />
 
         <button id="devtoolsbtn" v-on:click=" collapsed = !collapsed">🖥 Developer Tools️</button>
@@ -121,7 +123,8 @@
   import hardPic from '@/assets/hard.jpg'
 
   import hailMp3 from '@/assets/FX049.mp3'
-  // import warpMp3 from '@/assets/FX043.mp3'
+  import warpMp3 from '@/assets/FX043.mp3'
+  import explosionMp3 from '@/assets/explosion.mp3'
 
   export default {
     name: 'App',
@@ -137,11 +140,20 @@
       'damage',
       'inventory'
     ]),
+    watch: {
+      sfxPlay: function (value, oldValue) {
+        console.log(`old value is ${oldValue} and new Value is ${value}`)
+        this.$refs.sfxPlayer.onSelectSong(this.$data.sfx)
+      }
+    },
     methods: {
       ...mapActions([
         'addDebris',
         'grantInventory'
       ]),
+      playSfx: function (sfx) {
+        this.$refs.sfxPlayer.onSelectSong(sfx)
+      },
       sfxTest: function () {
         console.log(this.$refs.musicPlayer)
         this.$refs.sfxPlayer.onSelectSong(this.$data.sfx)
@@ -203,6 +215,20 @@
           title: 'Hail',
           src: hailMp3
         },
+        sfxList: [
+          {
+            title: 'Hail',
+            src: hailMp3
+          },
+          {
+            title: 'Explosion',
+            src: explosionMp3
+          },
+          {
+            title: 'Warp',
+            src: warpMp3
+          }
+        ],
         title: 'To Grow without Space',
         collapsed: true
       }

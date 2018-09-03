@@ -4,11 +4,11 @@
 <template>
   <div class="item-wrapper" :class="{'invis': hidden}">
     <div class="item">
-      <img
+      <a @click="useItem"><img
         width="100px"
         height="100px"
         :src="image"
-      ></img>
+      ></img></a>
       <h4>{{ label }}</h4>
       <p>(qty {{ quantity }})</p>
     </div>
@@ -19,6 +19,10 @@
 
 <script>
   import jar from '@/assets/empty-jar.png'
+  import store from '@/store'
+  import { mapActions } from 'vuex'
+  import candy from '@/assets/candy.mp3'
+  import hammer from '@/assets/hammer.mp3'
 
   export default {
     name: 'Item',
@@ -44,8 +48,30 @@
         default: false
       }
     },
-    computed: {
-
+    methods: {
+      ...mapActions([
+        'consumeItem'
+      ]),
+      playSfx: function (sfx) {
+        this.$parent.$parent.playSfx(sfx)
+      },
+      useItem: function () {
+        console.log(`Using item ${this.name}`)
+        if (this.name === 'kit') {
+          this.playSfx({
+            title: 'Hammer',
+            src: hammer
+          })
+          store.commit('subtractDamage', 10)
+        } else if (this.name === 'candy') {
+          this.playSfx({
+            title: 'Candy',
+            src: candy
+          })
+          store.commit('subtractUnrest', 10)
+        }
+        store.commit('consumeInventory', this.name)
+      }
     }
   }
 </script>
