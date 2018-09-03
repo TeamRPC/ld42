@@ -23,6 +23,8 @@
   import { mapActions } from 'vuex'
   import candy from '@/assets/candy.mp3'
   import hammer from '@/assets/hammer.mp3'
+  import hello from '@/assets/hello.mp3'
+  import angry from '@/assets/angry.mp3'
 
   export default {
     name: 'Item',
@@ -48,6 +50,11 @@
         default: false
       }
     },
+    data () {
+      return {
+        clickCounter: 0
+      }
+    },
     methods: {
       ...mapActions([
         'consumeItem'
@@ -62,15 +69,30 @@
             title: 'Hammer',
             src: hammer
           })
+          store.commit('consumeInventory', this.name)
           store.commit('subtractDamage', 10)
         } else if (this.name === 'candy') {
           this.playSfx({
             title: 'Candy',
             src: candy
           })
+          store.commit('consumeInventory', this.name)
           store.commit('subtractUnrest', 10)
+        } else if (this.name === 'vessel') {
+          if (this.clickCounter < 10) {
+            this.playSfx({
+              title: 'Hello',
+              src: hello
+            })
+          } else {
+            this.playSfx({
+              title: 'Angry',
+              src: angry
+            })
+          }
         }
-        store.commit('consumeInventory', this.name)
+
+        this.clickCounter++
       }
     }
   }

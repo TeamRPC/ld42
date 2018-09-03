@@ -32,6 +32,9 @@ const mutations = {
     state.unrest -= amt
   },
   grantInventory (state, item) {
+    if (typeof item.quantity === 'undefined') {
+      item.quantity = 1
+    }
     state.inventory.push(item)
   },
   consumeInventory (state, item) {

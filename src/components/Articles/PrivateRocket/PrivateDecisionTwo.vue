@@ -27,6 +27,7 @@
   import shipPicture from '@/assets/ship-side.png'
   import store from '@/store'
   import { mapGetters, mapActions } from 'vuex'
+  import docking from '@/assets/docking.mp3'
 
   export default {
     name: 'PrivateDecisionTwo',
@@ -39,14 +40,19 @@
       ]),
       shipPicture: () => shipPicture
     },
-    methods: mapActions([
-      'addDebris',
-      'setDebris',
-      'addDamage',
-      'setDamage',
-      'addPeople',
-      'addUnrest'
-    ]),
+    methods: {
+      ...mapActions([
+        'addDebris',
+        'setDebris',
+        'addDamage',
+        'setDamage',
+        'addPeople',
+        'addUnrest'
+      ]),
+      playSfx: function (sfx) {
+        this.$parent.playSfx(sfx)
+      }
+    },
     data () {
       return {
         allowVessel: function () {
@@ -56,6 +62,10 @@
             name: 'vessel',
             label: 'Vessel',
             image: shipPicture
+          })
+          this.playSfx({
+            title: 'docking',
+            src: docking
           })
 
           this.$router.push({
@@ -67,7 +77,11 @@
           store.dispatch('addUnrest', 25)
           store.dispatch('grantInventory', {
             name: 'vessel',
-            hidden: true
+            hidden: false
+          })
+          this.playSfx({
+            title: 'docking',
+            src: docking
           })
 
           this.$router.push({

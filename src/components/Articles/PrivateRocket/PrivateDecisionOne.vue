@@ -32,7 +32,7 @@
   import store from '@/store'
   import { mapGetters, mapActions } from 'vuex'
   import shipPicture from '@/assets/ship-side.png'
-  import lazerpan from '@/assets/lazerpan.mp3'
+  import lazerpan from '@/assets/lazerattack.mp3'
   import hail from '@/assets/FX049.mp3'
 
   export default {

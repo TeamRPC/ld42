@@ -81,7 +81,7 @@
           :controls="true"
           :mutex="false"
           ref="musicPlayer"
-          :volume="0.5"
+          :volume="0.30"
         />
 
         <button id="devtoolsbtn" v-on:click=" collapsed = !collapsed">🖥 Developer Tools️</button>
