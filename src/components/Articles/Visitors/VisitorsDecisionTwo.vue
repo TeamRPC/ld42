@@ -26,7 +26,6 @@
   import slaughter from '@/assets/slaughter.mp3'
   import lazerpan from '@/assets/lazerattack.mp3'
 
-
   export default {
     name: 'PrivateDecisionTwo',
     computed: {
