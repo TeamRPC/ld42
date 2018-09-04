@@ -19,6 +19,13 @@ import PopResultElderly from '@/components/Articles/PopulationLimit/PopResultEld
 import PopResultAdults from '@/components/Articles/PopulationLimit/PopResultAdults'
 import PopResultYouth from '@/components/Articles/PopulationLimit/PopResultYouth'
 
+import VisitorsIntro from '@/components/Articles/Visitors/VisitorsIntro'
+import VisitorsDecisionOne from '@/components/Articles/Visitors/VisitorsDecisionOne'
+import VisitorsDecisionTwo from '@/components/Articles/Visitors/VisitorsDecisionTwo'
+import VisitorsResultShoot from '@/components/Articles/Visitors/VisitorsResultShoot'
+import VisitorsResultAllow from '@/components/Articles/Visitors/VisitorsResultAllow'
+import VisitorsResultIgnore from '@/components/Articles/Visitors/VisitorsResultIgnore'
+
 import GameOver from '@/components/Articles/GameOver'
 
 Vue.use(Router)
@@ -141,6 +148,48 @@ export default new Router({
       components: {
         default: PopResultYouth,
         content: PopResultYouth
+      }
+    },
+    {
+      path: '/visitors-decision-1',
+      components: {
+        default: VisitorsDecisionOne,
+        content: VisitorsDecisionOne
+      }
+    },
+    {
+      path: '/visitors',
+      components: {
+        default: VisitorsIntro,
+        content: VisitorsIntro
+      }
+    },
+    {
+      path: '/visitors-result-shoot',
+      components: {
+        default: VisitorsResultShoot,
+        content: VisitorsResultShoot
+      }
+    },
+    {
+      path: '/visitors-result-allow',
+      components: {
+        default: VisitorsResultAllow,
+        content: VisitorsResultAllow
+      }
+    },
+    {
+      path: '/visitors-result-ignore',
+      components: {
+        default: VisitorsResultIgnore,
+        content: VisitorsResultIgnore
+      }
+    },
+    {
+      path: '/visitors-decision-2',
+      components: {
+        default: VisitorsDecisionTwo,
+        content: VisitorsDecisionTwo
       }
     },
     {

@@ -35,7 +35,14 @@ const mutations = {
     if (typeof item.quantity === 'undefined') {
       item.quantity = 1
     }
-    state.inventory.push(item)
+    // if there already exists an inventory item of the same name, add +1
+    // instead of creating a duplicate.
+    var matchingItemIndex = state.inventory.findIndex(inv => inv.name === item.name)
+    if (matchingItemIndex !== -1) {
+      state.inventory[matchingItemIndex].quantity += 1
+    } else {
+      state.inventory.push(item)
+    }
   },
   consumeInventory (state, item) {
     var matchingItemIndex = state.inventory.findIndex(inv => inv.name === item)

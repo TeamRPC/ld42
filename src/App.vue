@@ -78,8 +78,9 @@
           :music="music"
           :list="musicList"
           :mini="false"
-          :controls="true"
           :mutex="false"
+          :shuffle="false"
+          repeat="no-repeat"
           ref="musicPlayer"
           :volume="0.30"
         />

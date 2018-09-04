@@ -27,10 +27,10 @@
     </router-link>
 
     <router-link
-      to="/null"
+      to="/visitors"
       class="button button-gray"
     >
-      TBD
+      Raiders
     </router-link>
 
   </article>
@@ -69,9 +69,9 @@
         }
       },
       isPopulationMaxed: function () {
-        console.log(this.people)
+        console.log(`pop maxed? ${this.people < 99}`)
         return {
-          'button-disabled': (this.people > 99)
+          'button-disabled': (this.people < 99)
         }
       }
     },

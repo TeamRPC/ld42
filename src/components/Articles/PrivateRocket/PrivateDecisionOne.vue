@@ -34,6 +34,7 @@
   import shipPicture from '@/assets/ship-side.png'
   import lazerpan from '@/assets/lazerattack.mp3'
   import hail from '@/assets/FX049.mp3'
+  import docking from '@/assets/docking.mp3'
 
   export default {
     name: 'PrivateDecisionOne',
@@ -79,6 +80,10 @@
             label: 'Vessel',
             image: shipPicture,
             hidden: false
+          })
+          this.playSfx({
+            title: 'docking',
+            src: docking
           })
 
           this.$router.push({

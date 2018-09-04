@@ -33,6 +33,7 @@
   import { mapGetters, mapActions } from 'vuex'
   import station from '@/assets/station-2.png'
   import panic from '@/assets/panic.mp3'
+  import getout from '@/assets/getouttahere.mp3'
 
   export default {
     name: 'PopDecisionOne',
@@ -94,6 +95,11 @@
         exileVessel: function () {
           this.$router.push({
             path: '/pop-result-exile'
+          })
+          store.dispatch('consumeInventory', 'vessel')
+          this.playSfx({
+            title: 'Get Out',
+            src: getout
           })
         }
       }
