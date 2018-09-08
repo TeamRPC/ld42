@@ -53,19 +53,19 @@
     data () {
       return {
         ignoreVessel: function () {
-          store.dispatch('addPeople', 25)
+          store.dispatch('subtractPeople', 75)
           store.dispatch('addUnrest', 25)
           store.dispatch('grantInventory', {
-            label: 'Raider Vessel',
-            name: 'fighter',
-            hidden: false
+            label: 'Raider Note',
+            name: 'note-raid',
+            hidden: true
           })
           this.playSfx({
             title: 'Slaughter',
             src: slaughter
           })
           this.$router.push({
-            path: '/private-result-ignore'
+            path: '/visitors-result-ignore'
           })
         },
         shootVessel: function () {
@@ -76,7 +76,8 @@
             src: lazerpan
           })
           store.dispatch('grantInventory', {
-            name: 'fighter',
+            label: 'Raider Note',
+            name: 'note-raid',
             hidden: true
           })
           this.$router.push({

@@ -3,7 +3,7 @@
 
 <template>
   <div class="private-rocket">
-    <h2>Visitors</h2>
+    <h2>Raiders</h2>
     <img
       :src="shipPicture"
     ></img>

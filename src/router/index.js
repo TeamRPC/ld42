@@ -27,6 +27,7 @@ import VisitorsResultAllow from '@/components/Articles/Visitors/VisitorsResultAl
 import VisitorsResultIgnore from '@/components/Articles/Visitors/VisitorsResultIgnore'
 
 import GameOver from '@/components/Articles/GameOver'
+import GameWon from '@/components/Articles/GameWon'
 
 Vue.use(Router)
 
@@ -197,6 +198,13 @@ export default new Router({
       components: {
         default: GameOver,
         content: GameOver
+      }
+    },
+    {
+      path: '/game-win',
+      components: {
+        default: GameWon,
+        content: GameWon
       }
     }
   ]

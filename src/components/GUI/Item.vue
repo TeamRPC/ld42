@@ -78,6 +78,7 @@
           })
           store.commit('consumeInventory', this.name)
           store.commit('subtractUnrest', 10)
+          store.commit('addPeople', 25)
         } else if (this.name === 'vessel') {
           if (this.clickCounter < 10) {
             this.playSfx({

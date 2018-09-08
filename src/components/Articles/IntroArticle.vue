@@ -13,7 +13,7 @@
     <router-link
       to="/private"
       class="button button-gray"
-      :class="isScenarioCompleted"
+      :class="isPrivateRocketCompleted"
     >
       Unknown Vessel
     </router-link>
@@ -21,7 +21,7 @@
     <router-link
       to="/pop"
       class="button button-gray"
-      :class="isPopulationMaxed"
+      :class="isPopulationStable"
     >
       Population Limit
     </router-link>
@@ -29,8 +29,15 @@
     <router-link
       to="/visitors"
       class="button button-gray"
+      :class="isVisitorsCompleted"
     >
       Raiders
+    </router-link>
+
+    <router-link
+      to="/null"
+      :class="isInventoryEmpty"
+    >
     </router-link>
 
   </article>
@@ -43,19 +50,6 @@
 
   export default {
     name: 'IntroArticle',
-    mounted: function () {
-      if (this.people < 1) {
-        console.log('population too low')
-        this.$router.push({
-          path: '/game-over'
-        })
-      } else if (this.damage > 99) {
-        console.log('station destroyed')
-        this.$router.push({
-          path: '/game-over'
-        })
-      }
-    },
     computed: {
       ...mapGetters([
         'inventory',
@@ -63,16 +57,67 @@
         'damage',
         'unrest'
       ]),
-      isScenarioCompleted: function () {
+      isPrivateRocketCompleted: function () {
         return {
-          'button-disabled': this.inventory.filter(item => item.name === 'vessel').length
+          'button-disabled': this.inventory.filter(item => item.name === 'note-vessel').length > 0
         }
       },
-      isPopulationMaxed: function () {
-        console.log(`pop maxed? ${this.people < 99}`)
+      isPopulationStable: function () {
         return {
           'button-disabled': (this.people < 99)
         }
+      },
+      isPopulationLimitCompleted: function () {
+        return {
+          'button-disabled': this.inventory.filter(item => item.name === 'note-population')
+        }
+      },
+      isVisitorsCompleted: function () {
+        return {
+          'button-disabled': this.inventory.filter(item => item.name === 'note-raid').length > 0
+        }
+      },
+      isInventoryEmpty: function () {
+        return (
+          this.inventory
+            .filter(item => item.name === 'candy').length === 0 &&
+          this.inventory
+            .filter(item => item.name === 'kit').length === 0
+        )
+      }
+    },
+    mounted: function () {
+      console.log('MOUNTY')
+      if (this.people < 1) {
+        // Lose condition-- population is <= 0
+        console.log('population too low')
+        this.$router.push({
+          path: '/game-over'
+        })
+      } else if (this.damage > 99) {
+        // Lose condition-- station destroyed from damage
+        console.log('station destroyed')
+        this.$router.push({
+          path: '/game-over'
+        })
+      } else if (
+        // Win condition-- all missions completed
+        this.inventory.filter(i => i.name === 'note-vessel').length > 0 &&
+        this.inventory.filter(i => i.name === 'note-raid').length > 0 &&
+        this.inventory.filter(i => i.name === 'note-population').length > 0
+      ) {
+        console.log('missions completed!')
+        this.$router.push({
+          path: '/game-win'
+        })
+      } else if (
+        this.inventory.filter(i => i.name === 'note-vessel').length === 0 &&
+        this.inventory.filter(i => i.name === 'note-riot').length === 0 &&
+        this.inventory.filter(i => i.name === 'note-population').length === 0 &&
+        this.inventory.filter(i => i.name === 'candy').length === 0
+      ) {
+        // Lose condition -- cannot proceed on missions and inventory is empty
+        console.log('lose')
       }
     },
     data () {

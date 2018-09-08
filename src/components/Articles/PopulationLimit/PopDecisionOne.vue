@@ -20,7 +20,7 @@
     </a>
     <a
       class="button button-red"
-      :class="isVesselInInventory"
+      :class="isVesselAbsent"
       @click.prevent="exileVessel()"
     >
       Exile the Vessel
@@ -46,11 +46,10 @@
         'inventory'
       ]),
       station: () => station,
-      isVesselInInventory: function () {
+      isVesselAbsent: function () {
         return {
           'invis': this.inventory.filter(
-            item => item.name === 'vessel'
-          ).length === 0
+            item => item.name === 'vessel').length === 0
         }
       }
     },
@@ -70,11 +69,6 @@
         hidden: true,
         purgeStation: function () {
           store.dispatch('addDebris', 25)
-          store.dispatch('grantInventory', {
-            name: 'vessel',
-            hidden: true
-          })
-
           this.$router.push({
             path: '/pop-decision-2'
           })
@@ -87,6 +81,11 @@
             title: 'panic',
             src: panic
           })
+          store.dispatch('grantInventory', {
+            name: 'note-population',
+            label: 'Population Limit Completion Note',
+            hidden: true
+          })
 
           this.$router.push({
             path: '/pop-result-ignore'
@@ -96,7 +95,13 @@
           this.$router.push({
             path: '/pop-result-exile'
           })
+          store.dispatch('subtractPeople', 25)
           store.dispatch('consumeInventory', 'vessel')
+          store.dispatch('grantInventory', {
+            name: 'note-population',
+            label: 'Population Limit Completion Note',
+            hidden: true
+          })
           this.playSfx({
             title: 'Get Out',
             src: getout

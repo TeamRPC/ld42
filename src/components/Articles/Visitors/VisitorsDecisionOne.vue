@@ -71,7 +71,7 @@
           })
           store.dispatch('addDebris', 25)
           store.dispatch('grantInventory', {
-            name: 'vessel',
+            name: 'note-raid',
             hidden: true
           })
           this.$router.push({
@@ -94,10 +94,10 @@
             src: slaughter
           })
           store.dispatch('grantInventory', {
-            name: 'vessel',
+            name: 'note-raid',
             quantity: 1,
             image: shipPicture,
-            hidden: false
+            hidden: true
           })
           store.dispatch('subtractPeople', 50)
           store.dispatch('addUnrest', 50)

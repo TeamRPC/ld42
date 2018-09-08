@@ -64,6 +64,11 @@
             title: 'death',
             src: death
           })
+          store.dispatch('grantInventory', {
+            name: 'note-population',
+            label: 'Population Limit Completion Note',
+            hidden: true
+          })
 
           this.$router.push({
             path: '/pop-result-elderly'
@@ -78,6 +83,11 @@
             title: 'scream',
             src: scream
           })
+          store.dispatch('grantInventory', {
+            name: 'note-population',
+            label: 'Population Limit Completion Note',
+            hidden: true
+          })
 
           this.$router.push({
             path: '/pop-result-adults'
@@ -91,6 +101,11 @@
           this.playSfx({
             title: 'sadness',
             src: sadness
+          })
+          store.dispatch('grantInventory', {
+            name: 'note-population',
+            label: 'Population Limit Completion Note',
+            hidden: true
           })
 
           this.$router.push({

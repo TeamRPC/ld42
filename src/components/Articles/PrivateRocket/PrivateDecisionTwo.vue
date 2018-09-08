@@ -63,6 +63,11 @@
             label: 'Vessel',
             image: shipPicture
           })
+          store.dispatch('grantInventory', {
+            name: 'note-vessel',
+            label: 'Vessel Note',
+            hidden: true
+          })
           this.playSfx({
             title: 'docking',
             src: docking
@@ -78,6 +83,11 @@
           store.dispatch('grantInventory', {
             name: 'vessel',
             hidden: false
+          })
+          store.dispatch('grantInventory', {
+            name: 'note-vessel',
+            label: 'Vessel Note',
+            hidden: true
           })
           this.playSfx({
             title: 'docking',

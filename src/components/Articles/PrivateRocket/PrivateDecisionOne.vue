@@ -38,12 +38,15 @@
 
   export default {
     name: 'PrivateDecisionOne',
-    computed: mapGetters([
-      'people',
-      'debris',
-      'unrest',
-      'damage'
-    ]),
+    computed: {
+      ...mapGetters([
+        'people',
+        'debris',
+        'unrest',
+        'damage'
+      ]),
+      shipPicture: () => shipPicture
+    },
     methods: {
       ...mapActions([
         'addDebris',
@@ -60,7 +63,7 @@
         shootVessel: function () {
           store.dispatch('addDebris', 25)
           store.dispatch('grantInventory', {
-            name: 'vessel',
+            name: 'note-vessel',
             hidden: true
           })
           this.playSfx({
@@ -80,6 +83,10 @@
             label: 'Vessel',
             image: shipPicture,
             hidden: false
+          })
+          store.dispatch('grantInventory', {
+            name: 'note-vessel',
+            hidden: true
           })
           this.playSfx({
             title: 'docking',
