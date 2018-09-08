@@ -42,6 +42,13 @@ export default new Router({
       }
     },
     {
+      path: '/ld42',
+      components: {
+        default: IntroArticle,
+        content: IntroArticle
+      }
+    },
+    {
       path: '/private',
       components: {
         default: PrivateIntro,
